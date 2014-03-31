@@ -15,12 +15,15 @@ ENV_DIR=$3
 GRADLE_DIST="gradle-1.0-milestone-5"
 GRADLE_TASK="stage"
 
-echo "-------> Installing Oracle JDK 8"
+echo -n "-------> Installing Oracle JDK 8"
 echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 apt-get install -y software-properties-common
 apt-add-repository ppa:webupd8team/java
 apt-get update
 apt-get install oracle-java8-installer oracle-java8-set-default
+echo " [Done]"
+echo -n "Installed Java: "
+java -version
 
 export_env_dir $ENV_DIR
 
