@@ -34,7 +34,7 @@ apt-get update
 apt-get install -y software-properties-common
 apt-add-repository -y ppa:webupd8team/java
 apt-get update
-apt-get install -y oracle-java8-installer oracle-java8-set-default
+apt-get install -y oracle-java8-installer oracle-java8-set-default tree
 echo " [Done]"
 echo -n "Installed Java: "
 java -version
@@ -79,6 +79,9 @@ if [ "${PIPESTATUS[*]}" != "0 0" ]; then
   echo " !     Failed to build app"
   exit 1
 fi
+
+echo "This is the the file tree after building"
+tree --dirsfirst
 
 PROFILE_PATH="$BUILD_DIR/.profile.d/gradle.sh"
 mkdir -p $(dirname $PROFILE_PATH)
